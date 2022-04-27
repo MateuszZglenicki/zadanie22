@@ -6,17 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class MainController {
+public class FormController {
+    private static final String OWNER_EMAIL = "matman@byom.de";
+    private final MailService mailService;
 
-    private MailService mailService;
-
-    public MainController(MailService mailService) {
+    public FormController(MailService mailService) {
         this.mailService = mailService;
-    }
-
-    @GetMapping("/")
-    public String home() {
-        return "home";
     }
 
     @GetMapping("/kontakt")
@@ -27,8 +22,7 @@ public class MainController {
 
     @PostMapping("/send")
     public String mail(Message message) {
-        mailService.mailSend("matman@byom.de", message);
-        return "redirect:/";
+        mailService.mailSend(OWNER_EMAIL, message);
+        return "redirect:/success.html";
     }
-
 }

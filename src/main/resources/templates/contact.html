@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+      layout:decorate="~{layout.html}" xmlns:th="https://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Kontakt</title>
@@ -8,23 +9,22 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h2 id="/kontakt">Napisz do mnie</h2>
-<form action="/send" method="post" th:object="${message}" style="width: 38.5%; margin: 5px auto" layout:fragment="content">
+<form th:action="@{/send}" method="post" th:object="${message}" style="width: 38.5%; margin: 5px auto" layout:fragment="content">
+    <h2 id="/kontakt">Napisz do mnie</h2>
     <div class="md-3">
-        <label for="validationCustom01" class="form-label">First name</label>
+        <label for="validationCustom01" class="form-label">Imię</label>
         <input type="text" class="form-control" id="validationCustom01" required th:field="*{name}">
     </div>
-
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" th:field="*{message.getEmail()}">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+               th:field="*{email}">
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{message.getText()}"></textarea>
+        <label for="exampleFormControlTextarea1" class="form-label">Treść wiadomości</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{text}"></textarea>
     </div>
-    <button type="button" class="btn btn-success">Wyślij</button>
+    <button type="submit" class="btn btn-success">Wyślij</button>
 </form>
-
 </body>
 </html>

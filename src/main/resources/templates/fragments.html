@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Strona główna</title>
 
 </head>
 <body>
@@ -11,10 +11,8 @@
     <img src=https://cdn.galleries.smcloud.net/t/galleries/gf-d5fs-fXVi-vFFf_cwiczenia-na-szesciopak-jak-w-miesiac-wyrzezbic-miesnie-brzucha-664x442-nocrop.jpg width="500" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">
-            <nav>
-                <a href="/">Strona główna</a>
-                <a href="/kontakt">Kontakt</a>
-            </nav>
+                <a th:href="@{/}">Strona główna</a>
+                <a th:href="@{/kontakt}">Kontakt</a>
         </h5>
         <p class="card-text">
             Cześć, nazywam się Jakub Koszczka i zapraszam Cię do współpracy treningowej.
@@ -31,7 +29,6 @@
 </div>
 
 <div th:fragment="footer"></div>
-
 
 </body>
 </html>
